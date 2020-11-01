@@ -31,8 +31,22 @@
 
     }
 
+    class AdminUser extends User {
+        public $level;
+
+        public function __construct($username, $email, $level) {
+            $this->level = $level;
+            parent::__construct($username, $email);
+        }
+    }
+
     $userOne = new User('thando', 'thando@gmail.com');
     $userTwo = new User('mncedi', 'mncedi@mail.com');
+    $userThree = new AdminUser('Dishman', 'dishman@thandotech.com', 5);
+
+    echo $userThree->username.'<br>';
+    echo $userThree->getEmail().'<br>';
+    echo $userThree->level.'<br>';
 
     $userOne->setEmail('thandotech@mail.co.za');
 
