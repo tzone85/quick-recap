@@ -3,7 +3,8 @@
     class User {
         // properties and methods
         public $username;
-        private $email;
+        protected $email;
+        public $role = 'member';
 
         public function __construct($username, $email) {
             $this->username = $username;
@@ -29,14 +30,23 @@
             }
         }
 
+        public function message() {
+            return "$this->email sent a new message";
+        }
+
     }
 
     class AdminUser extends User {
         public $level;
+        public $role = 'admin';
 
         public function __construct($username, $email, $level) {
             $this->level = $level;
             parent::__construct($username, $email);
+        }
+
+        public function message() {
+            return "$this->email, an admin, sent a new message";
         }
     }
 
@@ -46,12 +56,18 @@
 
     echo $userThree->username.'<br>';
     echo $userThree->getEmail().'<br>';
-    echo $userThree->level.'<br>';
+    
+    echo $userOne->getEmail().'<br>';
+    echo $userTwo->getEmail().'<br>';
 
     $userOne->setEmail('thandotech@mail.co.za');
 
-    echo $userOne->getEmail().'<br>';
-    echo $userTwo->getEmail().'<br>';
+    echo $userThree->level.'<br>';
+    echo $userOne->role.'<br>';
+    echo $userThree->role.'<br>';
+    echo $userOne->message().'<br>';
+    echo $userTwo->message().'<br>';
+    echo $userThree->message().'<br>';
 
     // echo $userOne->addFriend().'<br>';
     // echo $userTwo->addFriend().'<br>';
