@@ -5,6 +5,11 @@
         public $username = 'thando';
         public $email = 'thando@mail.com';
 
+        public function __construct($username, $email) {
+            $this->username = $username;
+            $this->email = $email;
+        }
+
         public function addFriend() {
             
             return "$this->username Added a new friend";
@@ -12,8 +17,8 @@
 
     }
 
-    $userOne = new User();
-    $userTwo = new User();
+    $userOne = new User('thando', 'thando@gmail.com');
+    $userTwo = new User('mncedi', 'mncedi@mail.com');
 
     echo $userOne->username.'<br>';
     echo $userOne->email.'<br>';
@@ -21,7 +26,7 @@
 
     $userTwo->username = 'Mncedi';
     $userTwo->email = 'mncedi@mail.com';
-    
+
     echo $userTwo->username.'<br>';
     echo $userTwo->email.'<br>';
     echo $userTwo->addFriend().'<br>';
@@ -34,8 +39,6 @@
 
     echo "<br/> ############### get_class(objectName) ##########################<br/>";
     echo 'The class is '.get_class($userOne);
-
-
 
     // echo "<br/><br/> ################## get_class_vars('classname') ################<br/>";
     // print_r(get_class_vars('User')).'<br/>';
