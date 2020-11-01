@@ -15,13 +15,32 @@
             return "$this->username Added a new friend";
         }
 
+        // getters
+        public function getEmail() {
+            return $this->email;
+        }
+
+        // setters
+        public function setEmail($email) {
+            if (strpos($email, '@') > -1) {
+                $this->email = $email;
+            } else {
+                echo "Please enter a valid email";
+            }
+        }
+
     }
 
     $userOne = new User('thando', 'thando@gmail.com');
     $userTwo = new User('mncedi', 'mncedi@mail.com');
 
-    echo $userOne->addFriend().'<br>';
-    echo $userTwo->addFriend().'<br>';
+    $userOne->setEmail('thandotech@mail.co.za');
+
+    echo $userOne->getEmail().'<br>';
+    echo $userTwo->getEmail().'<br>';
+
+    // echo $userOne->addFriend().'<br>';
+    // echo $userTwo->addFriend().'<br>';
 
     // echo "<br/><br/> ################## get_class_vars('classname') ################<br/>";
     // print_r(get_class_vars('User')).'<br/>';
