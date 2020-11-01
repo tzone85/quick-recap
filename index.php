@@ -11,6 +11,15 @@
             $this->email = $email;
         }
 
+        // more magic methods besides the constructor
+        public function __destruct() {
+            echo "the user $this->username was removed <br>";
+        }
+
+        public function __clone() {
+            $this->username = $this->username.'(cloned)<br>';
+        }
+
         public function addFriend() {
             
             return "$this->username Added a new friend";
@@ -46,7 +55,7 @@
         }
 
         public function message() {
-            return "$this->email, an admin, sent a new message";
+            return "$this->email, an admin, sent a new message <br>";
         }
     }
 
@@ -69,6 +78,8 @@
     echo $userTwo->message().'<br>';
     echo $userThree->message().'<br>';
 
+    $userFour = clone $userOne;
+    echo $userFour->username;
     // echo $userOne->addFriend().'<br>';
     // echo $userTwo->addFriend().'<br>';
 
